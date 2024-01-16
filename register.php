@@ -1,8 +1,28 @@
 <?php
-if (isset($_POST["submitButton"])) {
-    echo "form was submitted";
+require_once("includes/classes/FormSanitizer.php");
+
+if (isset($_POST["submitButton"])) { 
+
+    $firstName = FormSanitizer::sanitizeFormString( $_POST["firstName"]);
+    $lastName = FormSanitizer::sanitizeFormString( $_POST["lastName"]);
+    $userName = FormSanitizer::sanitizeFormUsername( $_POST["userName"]);
+    $email = FormSanitizer::sanitizeFormEmail( $_POST["email"]);
+    $email2 = FormSanitizer::sanitizeFormEmail( $_POST["email2"]);
+    $password = FormSanitizer::sanitizeFormPassword( $_POST["password"]);
+    $password2 = FormSanitizer::sanitizeFormPassword( $_POST["password2"]);
 
 }
+
+// This function allows you to strip the spaces from the beginning and end of a an imput and also lower cases all letters than uppercases the first letter. 
+function sanitizeFormString($inputText){
+    $inputText = strip_tags($inputText);
+    $inputText = str_replace(" ", "", $inputText);
+    $inputText = strtolower($inputText);
+    $inputText = ucfirst($inputText);
+    return $inputText;
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +38,7 @@ if (isset($_POST["submitButton"])) {
             <div class = "signInContainer">
                 <div class="column"> 
                     <div class=" header">
-                <img src = "assets/images/netflixanie.png"/>
+                <img src = "assets/images/netflixanie.png" alt = " logo image"/>
                 <h3> Sign Up</h3>
                 <span> to coninue to Neflixanie</span>
                 
@@ -44,6 +64,8 @@ if (isset($_POST["submitButton"])) {
                         <input type= "submit"  name = "submitButton" value = "SUBMIT">
 
                     </form>
+
+                    <a href = "login.php" class = "signInMessage"> Already have an account? Click here to sign in here! </a>
 
 
                 </div>
