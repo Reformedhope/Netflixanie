@@ -2,6 +2,7 @@
 require_once("includes/config.php");
 require_once("includes/classes/FormSanitizer.php");
 require_once("includes/classes/Account.php");
+require_once("includes/classes/Constants.php");
 
 $account = new Account($con);
 
@@ -14,6 +15,8 @@ if (isset($_POST["submitButton"])) {
     $email2 = FormSanitizer::sanitizeFormEmail( $_POST["email2"]);
     $password = FormSanitizer::sanitizeFormPassword( $_POST["password"]);
     $password2 = FormSanitizer::sanitizeFormPassword( $_POST["password2"]);
+
+    $account->validateFirstName($firstName);
 
 }
 
@@ -44,12 +47,14 @@ function sanitizeFormString($inputText){
                     <div class=" header">
                 <img src = "assets/images/netflixanie.png" alt = " logo image"/>
                 <h3> Sign Up</h3>
-                <span> to coninue to Neflixanie</span>
+                <span> to continue to Neflixanie</span>
                 
                 </div>
 
                 <div>
                     <form method = "POST">
+
+
                         <?php echo $account->getError("First name wrong length")?>
                         <input type= "text"  name = "firstName" placeholder = "First Name" required>
                         <!-- If you type required it will not allow you to submit the page until all boxes are filed.  -->
