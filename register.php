@@ -65,6 +65,7 @@ function sanitizeFormString($inputText){
                         <?php echo $account->getError(Constants::$userNameTaken); ?>
                         <input type= "text"  name = "username" placeholder = "Username" required>
 
+                        <?php echo $account->getError(Constants::$emailsDontMatch); ?>
                         <input type= "email"  name = "email" placeholder = "Email" required>
 
                         <input type= "email"  name = "email2" placeholder = "Confirm Email" required>

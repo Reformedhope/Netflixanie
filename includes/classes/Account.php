@@ -15,8 +15,8 @@ class Account {
         $this->validateFirstName($fn);
         $this->validateLastName($ln);
         $this->validateUserName($un);
-        // $this->validateEmail($em);
-        // $this->validateEmail2($em2)
+        $this->validateEmails($em, $em2);
+        
         // $this->validateFirstName($fn);
         // $this->validateFirstName($fn);
 
@@ -48,8 +48,14 @@ class Account {
             return;
 
             if($query->rowCount() != 0){
-                array_push($this->errorArray, Constant::$userNameTaken);
+                array_push($this->errorArray, Constants::$userNameTaken);
             }
+    }
+
+    private function validateEmails($em, $em2) {
+        if ($em != $em2){
+            array_push($this->errorArray, Constants::$emailsDontMatch);
+        }
     }
 
 
