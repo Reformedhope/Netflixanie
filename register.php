@@ -16,7 +16,7 @@ if (isset($_POST["submitButton"])) {
     $password = FormSanitizer::sanitizeFormPassword( $_POST["password"]);
     $password2 = FormSanitizer::sanitizeFormPassword( $_POST["password2"]);
 
-    $account->validateFirstName($firstName);
+    $account->register($firstName, $lastName, $userName, $email, $email2, $password, $password2);
 
 }
 
@@ -55,12 +55,14 @@ function sanitizeFormString($inputText){
                     <form method = "POST">
 
 
-                        <?php echo $account->getError("First name wrong length")?>
+                        <?php echo $account->getError(Constants::$firstNameCharacters); ?>
                         <input type= "text"  name = "firstName" placeholder = "First Name" required>
                         <!-- If you type required it will not allow you to submit the page until all boxes are filed.  -->
-
+                        <?php echo $account->getError(Constants::$lastNameCharacters); ?>
                         <input type= "text"  name = "lastName" placeholder = "Last Name" required>
 
+                        <?php echo $account->getError(Constants::$userNameCharacters); ?>
+                        <?php echo $account->getError(Constants::$userNameTaken); ?>
                         <input type= "text"  name = "username" placeholder = "Username" required>
 
                         <input type= "email"  name = "email" placeholder = "Email" required>
