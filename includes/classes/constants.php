@@ -14,8 +14,4 @@ class Constants {
     public static $passwordLength = "Passwords need to have between 8 and 20 Characters.";
     
 
-
-
 }
-
-?>
