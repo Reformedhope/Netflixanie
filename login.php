@@ -1,6 +1,26 @@
 <?php
+require_once("includes/config.php");
+require_once("includes/classes/FormSanitizer.php");
+require_once("includes/classes/Account.php");
+require_once("includes/classes/Constants.php");
+
+$account = new Account($con);
+
+
+
 if (isset($_POST["submitButton"])) {
-    echo "form was submitted";
+    
+    $userName = FormSanitizer::sanitizeFormUsername( $_POST["username"]);
+    $password = FormSanitizer::sanitizeFormPassword( $_POST["password"]);
+    
+
+    $success = $account->login( $userName, $password );
+
+    if ($success) {
+        //Store session
+        header("Location:index.php");
+        // this is another way to route a page
+    }
 
 }
 ?>
@@ -20,14 +40,14 @@ if (isset($_POST["submitButton"])) {
                     <div class=" header">
                 <img src = "assets/images/netflixanie.png" alt = " logo image"/>
                 <h3> Sign In</h3>
-                <span> to coninue to Neflixanie</span>
+                <span> to continue to Neflixanie</span>
                 
                 </div>
 
                 <div>
                     <form method = "POST">
                         
-
+                        <?php echo $account->getError(Constants::$loginFailed); ?>
                         <input type= "text"  name = "username" placeholder = "Username" required>
 
 
