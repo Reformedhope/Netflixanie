@@ -14,10 +14,10 @@ if (isset($_POST["submitButton"])) {
     $password = FormSanitizer::sanitizeFormPassword( $_POST["password"]);
     
 
-    $success = $account->login( $userName, $password );
+    $success = $account->login( $username, $password );
 
     if ($success) {
-        //Store session
+        $_SESSION["userLoggedIn"] = $username; // there is an issue with the session logging
         header("Location:index.php");
         // this is another way to route a page
     }
