@@ -14,14 +14,20 @@ if (isset($_POST["submitButton"])) {
     $password = FormSanitizer::sanitizeFormPassword( $_POST["password"]);
     
 
-    $success = $account->login( $username, $password );
+    $success = $account->login( $userName, $password );
 
     if ($success) {
-        $_SESSION["userLoggedIn"] = $username; // there is an issue with the session logging
+        $_SESSION["userLoggedIn"] = $userName; // there is an issue with the session logging
         header("Location:index.php");
         // this is another way to route a page
     }
 
+}
+
+function getInputValue($name){
+    if(isset($_POST[$name])) {
+        echo $_POST[$name];
+    }
 }
 ?>
 
@@ -48,7 +54,7 @@ if (isset($_POST["submitButton"])) {
                     <form method = "POST">
                         
                         <?php echo $account->getError(Constants::$loginFailed); ?>
-                        <input type= "text"  name = "username" placeholder = "Username" required>
+                        <input type= "text"  name = "username" placeholder = "Username" value = "<?php getInputValue("username"); ?>" required>
 
 
                         <input type= "password"  name = "password" placeholder = "Password"required>
