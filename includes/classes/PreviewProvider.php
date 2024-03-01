@@ -18,10 +18,10 @@ class PreviewProvider {
         $preview =$entity->getPreview();
         $thumbnail =$entity->getThumbnail();
 
-        // need to go back and re download the data for the videos  It did not import all the information. 
+        
 
           return "<div class='previewContainer'>
-                    <img src='$thumbnail' class='previewImage' hidden>
+                    <img src='$thumbnail' class= 'previewImage' hidden>
 
                     <video autoplay muted class='previewVideo'>
                         <source src='$preview' type='video/mp4'>
