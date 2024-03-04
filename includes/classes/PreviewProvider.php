@@ -18,6 +18,8 @@ class PreviewProvider {
         $preview =$entity->getPreview();
         $thumbnail =$entity->getThumbnail();
 
+        // todo add subtitle 
+
         
 
           return "<div class='previewContainer'>
@@ -31,9 +33,13 @@ class PreviewProvider {
                     <div class='previewOverlay'>
                     <div class='mainDetails'>
                     <h3>$name</h3>
+
+                    <div class='buttons'>
+                    <button>Play</button>
+                    <button>Volume</button>
                     
                     </div>
-
+                    </div>
                     </div>
           
           </div>";
