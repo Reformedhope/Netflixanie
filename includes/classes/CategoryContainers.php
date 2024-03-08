@@ -13,11 +13,19 @@ class CategoryContainers {
 
         $html = "<div class ='previewCategories'>";
         while($row = $query->fetch(PDO::FETCH_ASSOC)){
-            $html .= $row["name"];
+            $html .= $this->getCategoryHTML($row, null, true, true);
         }
         
         return $html . "</div>";
 
+    }
+    private function getCategoryHTML($sqlData, $title, $tvShows, $movies){
+    $categoryId = $sqlData["id"];
+    $title = $title == null ? $sqlData["name"] : $title;
+
+
+
+    return $title . "<br>";
     }
 
 
