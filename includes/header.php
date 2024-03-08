@@ -12,6 +12,8 @@ if(!isset($_SESSION["userLoggedIn"])){
 }
 $userLoggedIn = $_SESSION["userLoggedIn"];
 ?>
+
+
 <!DOCTYPE html>
 
 <html>
@@ -24,7 +26,12 @@ $userLoggedIn = $_SESSION["userLoggedIn"];
         
 </head>
         <body>
-            <div class 'wrapper'>
+            <div class= 'wrapper'>
+</body>
+</html>
+
+
+
 
            
             

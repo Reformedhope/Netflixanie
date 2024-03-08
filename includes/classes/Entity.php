@@ -1,40 +1,37 @@
 <?php
 class Entity {
-    private  $con, $input;
 
-    public function __construct($con, $input){
-        $this->con =  $con;
+    private $con, $sqlData;
 
-        if(is_array($input)){
-            $this->sqlData =  $input;
+    public function __construct($con, $input) {
+        $this->con = $con;
+
+        if(is_array($input)) {
+            $this->sqlData = $input;
         }
         else {
-          $query = $this->con->prepare("SELECT * FROM entities WHERE  id=:id") ;
-          $query->bindValue(":id", $input);
-          $query->execute();
+            $query = $this->con->prepare("SELECT * FROM entities WHERE id=:id");
+            $query->bindValue(":id", $input);
+            $query->execute();
 
-          $this->sqlData = $query->fetch(PDO::FETCH_ASSOC);
-
+            $this->sqlData = $query->fetch(PDO::FETCH_ASSOC);
         }
     }
 
-    public function getId(){
+    public function getId() {
         return $this->sqlData["id"];
-
     }
 
-    public function getName(){
+    public function getName() {
         return $this->sqlData["name"];
-        
-    }
-    public function getThumbnail(){
-        return $this->sqlData["thumbnail"];
-        
     }
 
-    public function getPreview(){
+    public function getThumbnail() {
+        return $this->sqlData["thumbnail"];
+    }
+
+    public function getPreview() {
         return $this->sqlData["preview"];
-        
     }
 
 }

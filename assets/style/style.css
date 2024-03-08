@@ -11,7 +11,7 @@ body {
     box-sizing: border-box;
 }
 
-.wrapper{
+.wrapper {
     min-width: 1050px;
     min-height: 100%;
     background-color: #141414;
