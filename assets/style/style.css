@@ -105,17 +105,20 @@ body {
 .previewContainer {
     position: relative;
     display: flex;
-}.previewContainer.small {
+}
+
+.previewContainer.small {
     width: 230px;
     height: 129px;
     margin-right: 4px;
     display: inline-flex;
 }
+
 .previewContainer.small img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
-
 
 .previewOverlay {
     width: 100%;
@@ -123,11 +126,13 @@ body {
     background-color: rgba(0,0,0,0.3);
     position: absolute;
 }
+
 .previewOverlay .mainDetails h3 {
     color: #fff;
     font-size: 40px;
     margin: 15px 0;
 }
+
 .previewOverlay .mainDetails {
     position: relative;
     top: 35%;
@@ -135,8 +140,9 @@ body {
     display: flex;
     flex-direction: column;
 }
+
 .mainDetails button {
-    background-color: rgba(51,51,51, 0.4);
+    background-color: rgba(51,51,51,0.4);
     color: #fff;
     border: none;
     min-width: 150px;
@@ -149,15 +155,12 @@ body {
     margin-right: 5px;
     cursor: pointer;
 }
+
 button i {
     color: inherit;
 }
-/* When you hover over the buttons it changes colors.  */
-.mainDetails button:hover{
+
+.mainDetails button:hover {
     background-color: #e6e6e6;
-    color:#000
+    color: #000;
 }
-
-
-
-

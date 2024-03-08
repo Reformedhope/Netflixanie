@@ -1,76 +1,63 @@
 <?php
 require_once("includes/config.php");
 require_once("includes/classes/FormSanitizer.php");
-require_once("includes/classes/Account.php");
 require_once("includes/classes/Constants.php");
+require_once("includes/classes/Account.php");
 
 $account = new Account($con);
 
+    if(isset($_POST["submitButton"])) {
 
+        $username = FormSanitizer::sanitizeFormUsername($_POST["username"]);
+        $password = FormSanitizer::sanitizeFormPassword($_POST["password"]);
+        
+        $success = $account->login($username, $password);
 
-if (isset($_POST["submitButton"])) {
-    
-    $userName = FormSanitizer::sanitizeFormUsername( $_POST["username"]);
-    $password = FormSanitizer::sanitizeFormPassword( $_POST["password"]);
-    
-
-    $success = $account->login( $userName, $password );
-
-    if ($success) {
-        $_SESSION["userLoggedIn"] = $userName; // there is an issue with the session logging
-        header("Location:index.php");
-        // this is another way to route a page
+        if($success) {
+            $_SESSION["userLoggedIn"] = $username;
+            header("Location: index.php");
+        }
     }
 
-}
-
-function getInputValue($name){
+function getInputValue($name) {
     if(isset($_POST[$name])) {
         echo $_POST[$name];
     }
-}
+}  
 ?>
-
 <!DOCTYPE html>
-
 <html>
-    <head> 
-        <title> Welcome to Netflixanie</title>
-        <link rel="stylesheet" type = text/css href="assets/style/style.css"/>
+    <head>
+        <title>Welcome to Reeceflix</title>
+        <link rel="stylesheet" type="text/css" href="assets/style/style.css" />
+    </head>
+    <body>
         
-</head>
-        <body>
-           
-            <div class = "signInContainer">
-                <div class="column"> 
-                    <div class=" header">
-                <img src = "assets/images/netflixanie.png" alt = " logo image"/>
-                <h3> Sign In</h3>
-                <span> to continue to Neflixanie</span>
-                
+        <div class="signInContainer">
+
+            <div class="column">
+
+                <div class="header">
+                    <img src="assets/images/logo.png" title="Logo" alt="Site logo" />
+                    <h3>Sign In</h3>
+                    <span>to continue to Reeceflix</span>
                 </div>
 
-                <div>
-                    <form method = "POST">
-                        
-                        <?php echo $account->getError(Constants::$loginFailed); ?>
-                        <input type= "text"  name = "username" placeholder = "Username" value = "<?php getInputValue("username"); ?>" required>
+                <form method="POST">
+                    <?php echo $account->getError(Constants::$loginFailed); ?>
+                    <input type="text" name="username" placeholder="Username" value="<?php getInputValue("username"); ?>" required>
 
+                    <input type="password" name="password" placeholder="Password" required>
 
-                        <input type= "password"  name = "password" placeholder = "Password"required>
+                    <input type="submit" name="submitButton" value="SUBMIT">
 
+                </form>
 
-                        <input type= "submit"  name = "submitButton" value = "SUBMIT">
+                <a href="register.php" class="signInMessage">Need an account? Sign up here!</a>
 
-                    </form>
-
-                    <a href = "register.php" class = "signInMessage"> Need an account? Sign up here! </a>
-
-
-                </div>
             </div>
-            
 
-        </body>
-   
+        </div>
+
+    </body>
 </html>
