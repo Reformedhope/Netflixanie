@@ -45,7 +45,11 @@ class CategoryContainers {
             $entitiesHtml .= $previewProvider->createEntityPreviewSquare($entity);
         }
 
-        return $entitiesHtml . "<br>";
+        return "<div class='category'>
+        <a href='category.php'?id='$categoryId'>
+        
+        </a>
+        </div>"
     }
 
 }
