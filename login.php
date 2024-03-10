@@ -28,7 +28,7 @@ function getInputValue($name) {
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Welcome to Reeceflix</title>
+        <title>Welcome to Netflixanie</title>
         <link rel="stylesheet" type="text/css" href="assets/style/style.css" />
     </head>
     <body>
@@ -40,7 +40,7 @@ function getInputValue($name) {
                 <div class="header">
                     <img src="assets/images/logo.png" title="Logo" alt="Site logo" />
                     <h3>Sign In</h3>
-                    <span>to continue to Reeceflix</span>
+                    <span>to continue to Netflixanie</span>
                 </div>
 
                 <form method="POST">
