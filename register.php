@@ -56,8 +56,8 @@ function getInputValue($name) {
                     <?php echo $account->getError(Constants::$lastNameCharacters); ?>
                     <input type="text" name="lastName" placeholder="Last name" value="<?php getInputValue("lastName"); ?>" required>
                     
-                    <?php echo $account->getError(Constants::$usernameCharacters); ?>
-                    <?php echo $account->getError(Constants::$usernameTaken); ?>
+                    <?php echo $account->getError(Constants::$userNameCharacters); ?>
+                    <?php echo $account->getError(Constants::$userNameTaken); ?>
                     <input type="text" name="username" placeholder="Username" value="<?php getInputValue("username"); ?>" required>
 
                     <?php echo $account->getError(Constants::$emailsDontMatch); ?>
@@ -67,7 +67,7 @@ function getInputValue($name) {
 
                     <input type="email" name="email2" placeholder="Confirm email" value="<?php getInputValue("email2"); ?>" required>
                     
-                    <?php echo $account->getError(Constants::$passwordsDontMatch); ?>
+                    <?php echo $account->getError(Constants::$passwordDontMatch); ?>
                     <?php echo $account->getError(Constants::$passwordLength); ?>
                     <input type="password" name="password" placeholder="Password" required>
 
