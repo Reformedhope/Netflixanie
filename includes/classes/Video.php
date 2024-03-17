@@ -16,7 +16,7 @@ class Video{
             $this->sqlData = $query->fetch(PDO::FETCH_ASSOC);
         }
 
-        $this->entity = new Entity($con, $this->sqlData["entityId"])
+        $this->entity = new Entity($con, $this->sqlData["entityId"]);
     }
 }
 ?>
