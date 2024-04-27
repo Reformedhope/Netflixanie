@@ -17,16 +17,17 @@ class SeasonProvider {
         $seasonsHtml = "";
         foreach($seasons as $season) {
             $seasonNumber = $season->getSeasonNumber();
+
             $videosHtml = "";
-            foreach($season->getVideos() as $video){
-                $videosHtml.=$this->createVideoSquare($video);
+            foreach($season->getVideos() as $video) {
+                $videosHtml .= $this->createVideoSquare($video);
             }
 
 
             $seasonsHtml .= "<div class='season'>
                                     <h3>Season $seasonNumber</h3>
                                     <div class='videos'>
-                                    $videosHtml
+                                        $videosHtml
                                     </div>
                                 </div>";
         }
@@ -37,29 +38,24 @@ class SeasonProvider {
     private function createVideoSquare($video) {
         $id = $video->getId();
         $thumbnail = $video->getThumbnail();
-        $title = $video->getTitle();
+        $name = $video->getTitle();
         $description = $video->getDescription();
         $episodeNumber = $video->getEpisodeNumber();
 
-        return "<a href='watch.php?=$id'>
-        <div class = 'episodeContainer'>
-        <div class = 'contents'>
+        return "<a href='watch.php?id=$id'>
+                    <div class='episodeContainer'>
+                        <div class='contents'>
 
-        <img src ='$thumbnail'>
-        <div class ='videoInfo'>
-        <h4>$title</h4>
-        <span> $description</span>
-        </div>
-        
-        </div>
-        </div>
+                            <img src='$thumbnail'>
 
-        
-        </a>";
-        
+                            <div class='videoInfo'>
+                                <h4>$name</h4>
+                                <span>$description</span>
+                            </div>
 
-        
-
+                        </div>
+                    </div>
+                </a>";
     }
 }
 ?>
