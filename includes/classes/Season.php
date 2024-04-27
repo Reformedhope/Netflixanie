@@ -12,7 +12,7 @@ class Season{
     public function getSeasonNumber(){
         return $this->seasonNumber;
     }
-    public function getVideo(){
+    public function getVideos(){
         return $this->videos;
     }
 
